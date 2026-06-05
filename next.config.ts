@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 // local dependencies like `@tailwindcss/postcss` without crossing roots.
 
 const nextConfig: NextConfig = {
-  distDir: process.env.NEXT_DIST_DIR || ".next_dev_local",
+  distDir: process.env.NEXT_DIST_DIR || ".next",
 };
 
 export default nextConfig;

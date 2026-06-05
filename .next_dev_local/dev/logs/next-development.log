@@ -1,3 +1,2 @@
-{"timestamp":"00:00:02.676","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:11.640","source":"Server","level":"LOG","message":"✓ Compiled in 3s"}
-{"timestamp":"00:00:19.416","source":"Server","level":"LOG","message":"✓ Compiled in 4.4s"}
+{"timestamp":"00:01:40.414","source":"Server","level":"WARN","message":"⚠ Slow filesystem detected. The benchmark took 362ms. If D:\\Programming\\Syigen\\storycraft\\.next_dev_local/dev is a network drive, consider moving it to a local folder.\nSee more: https://nextjs.org/docs/app/guides/local-development"}
+{"timestamp":"00:02:18.973","source":"Server","level":"LOG","message":""}
