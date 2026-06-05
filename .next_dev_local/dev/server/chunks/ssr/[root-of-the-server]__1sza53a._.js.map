@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///D:/Programming/Syigen/storycraft/app/favicon.ico.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 256, height: 256 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAKC,QAAQ;AAAI"}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///D:/Programming/Syigen/storycraft/app/home/page.tsx"],"sourcesContent":["import React from 'react'\n\nfunction HomePage() {\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-between p-24\">\n      <div>\n        <h1>Welcome to the Home Page</h1>\n        <p>This is the main landing page of the application.</p>\n      </div>\n    </main>\n  )\n}\n\nexport default HomePage\n"],"names":["HomePage","className"],"mappings":";;;;;;AAEA,SAASA;IACP,qBACE,8OAAC;QAAKC,WAAU;kBACd,cAAA,8OAAC;;8BACC,8OAAC;8BAAG;;;;;;8BACJ,8OAAC;8BAAE;;;;;;;;;;;;;;;;;AAIX;uCAEeD"}}]
+}

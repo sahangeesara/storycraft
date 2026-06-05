@@ -1,0 +1,55 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 520477,
+    "firstLoadChunkPaths": [
+      ".next_dev_local\\static\\chunks\\05-c3ty_6dwfk.js",
+      ".next_dev_local\\static\\chunks\\14mrh2-p_w84d.js",
+      ".next_dev_local\\static\\chunks\\1rxncug86bump.js",
+      ".next_dev_local\\static\\chunks\\3z5q_p4msz2ha.js",
+      ".next_dev_local\\static\\chunks\\15orcrkp-_9ct.js",
+      ".next_dev_local\\static\\chunks\\3n7dm2ojtyzwn.js",
+      ".next_dev_local\\static\\chunks\\07u_h6i539_wj.js",
+      ".next_dev_local\\static\\chunks\\turbopack-2jqx-rioszt2c.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 514649,
+    "firstLoadChunkPaths": [
+      ".next_dev_local\\static\\chunks\\05-c3ty_6dwfk.js",
+      ".next_dev_local\\static\\chunks\\14mrh2-p_w84d.js",
+      ".next_dev_local\\static\\chunks\\3z5q_p4msz2ha.js",
+      ".next_dev_local\\static\\chunks\\15orcrkp-_9ct.js",
+      ".next_dev_local\\static\\chunks\\3n7dm2ojtyzwn.js",
+      ".next_dev_local\\static\\chunks\\07u_h6i539_wj.js",
+      ".next_dev_local\\static\\chunks\\turbopack-2jqx-rioszt2c.js"
+    ]
+  },
+  {
+    "route": "/about",
+    "firstLoadUncompressedJsBytes": 514649,
+    "firstLoadChunkPaths": [
+      ".next_dev_local\\static\\chunks\\05-c3ty_6dwfk.js",
+      ".next_dev_local\\static\\chunks\\14mrh2-p_w84d.js",
+      ".next_dev_local\\static\\chunks\\3z5q_p4msz2ha.js",
+      ".next_dev_local\\static\\chunks\\15orcrkp-_9ct.js",
+      ".next_dev_local\\static\\chunks\\3n7dm2ojtyzwn.js",
+      ".next_dev_local\\static\\chunks\\07u_h6i539_wj.js",
+      ".next_dev_local\\static\\chunks\\turbopack-2jqx-rioszt2c.js"
+    ]
+  },
+  {
+    "route": "/home",
+    "firstLoadUncompressedJsBytes": 514649,
+    "firstLoadChunkPaths": [
+      ".next_dev_local\\static\\chunks\\05-c3ty_6dwfk.js",
+      ".next_dev_local\\static\\chunks\\14mrh2-p_w84d.js",
+      ".next_dev_local\\static\\chunks\\3z5q_p4msz2ha.js",
+      ".next_dev_local\\static\\chunks\\15orcrkp-_9ct.js",
+      ".next_dev_local\\static\\chunks\\3n7dm2ojtyzwn.js",
+      ".next_dev_local\\static\\chunks\\07u_h6i539_wj.js",
+      ".next_dev_local\\static\\chunks\\turbopack-2jqx-rioszt2c.js"
+    ]
+  }
+]

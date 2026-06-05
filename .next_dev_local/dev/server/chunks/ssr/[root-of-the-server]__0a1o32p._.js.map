@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///D:/Programming/Syigen/storycraft/app/favicon.ico.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 256, height: 256 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAKC,QAAQ;AAAI"}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///D:/Programming/Syigen/storycraft/app/about/page.tsx"],"sourcesContent":["import React from 'react'\n\nfunction AboutApge() {\n    return (\n        <main className=\"flex min-h-screen flex-col items-center justify-between p-24\">\n            <div>\n                <h1>About Us</h1>\n                <p>This page provides information about our company and team.</p>\n            </div>\n        </main>\n\n    )\n}\n\nexport default AboutApge\n"],"names":["AboutApge","className"],"mappings":";;;;;;AAEA,SAASA;IACL,qBACI,8OAAC;QAAKC,WAAU;kBACZ,cAAA,8OAAC;;8BACG,8OAAC;8BAAG;;;;;;8BACJ,8OAAC;8BAAE;;;;;;;;;;;;;;;;;AAKnB;uCAEeD"}}]
+}

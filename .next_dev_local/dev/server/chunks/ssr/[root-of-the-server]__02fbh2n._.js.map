@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///D:/Programming/Syigen/storycraft/app/favicon.ico.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 256, height: 256 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAKC,QAAQ;AAAI"}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///D:/Programming/Syigen/storycraft/app/page.tsx"],"sourcesContent":["import Link from 'next/link';\n\nexport default function Home() {\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-between p-24\">\n      <div>\n        <h1 className=\"text-4xl font-bold\">Welcome to Next.js!</h1>\n        <p className=\"mt-4 text-lg\">Get started by editing <code className=\"bg-gray-200 p-1 rounded\">app/page.tsx</code></p>\n        <Link href=\"/home\" className=\"mt-4 text-blue-500 hover:underline\">Home page</Link>\n        <Link href=\"/about\" className=\"mt-4 text-blue-500 hover:underline\">Learn more about us</Link>\n\n      </div>\n    </main>\n  );\n}\n"],"names":["Home","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAKC,WAAU;kBACd,cAAA,8OAAC;;8BACC,8OAAC;oBAAGA,WAAU;8BAAqB;;;;;;8BACnC,8OAAC;oBAAEA,WAAU;;wBAAe;sCAAuB,8OAAC;4BAAKA,WAAU;sCAA0B;;;;;;;;;;;;8BAC7F,8OAAC,0LAAI;oBAACC,MAAK;oBAAQD,WAAU;8BAAqC;;;;;;8BAClE,8OAAC,0LAAI;oBAACC,MAAK;oBAASD,WAAU;8BAAqC;;;;;;;;;;;;;;;;;AAK3E"}}]
+}
