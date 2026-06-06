@@ -1,4 +1,4 @@
-import { stripe } from "@/lib/stripe";
+// import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 
 export async function POST() {
@@ -7,7 +7,7 @@ export async function POST() {
     payment_method_types: ["card"],
     line_items: [
       {
-        price: process.env.STRIPE_PRICE_MONTHLY!,
+        // price: process.env.STRIPE_PRICE_MONTHLY!,
         quantity: 1,
       },
     ],
