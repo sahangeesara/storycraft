@@ -1,7 +1,7 @@
-// // import { stripe } from "@/lib/stripe";
-// import { NextResponse } from "next/server";
+// import { stripe } from "@/lib/stripe";
+import { NextResponse } from "next/server";
 
-// export async function POST() {
+export async function POST() {
 //   const session = await stripe.checkout.sessions.create({
 //     mode: "subscription",
 //     payment_method_types: ["card"],
@@ -20,4 +20,4 @@
 //   return NextResponse.json({
 //     url: session.url,
 //   });
-// }
+}
