@@ -1,6 +1,6 @@
 import articles from '@/lib/articles';
 import ArticlePreview from '@/components/blog/ArticlePreview';
-
+import Link from "next/link";
 
 export default function BlogPage() {
   return (
@@ -15,6 +15,12 @@ export default function BlogPage() {
             Insights, tips, and stories about web development and technology
           </p>
         </div>
+        <Link
+          href="/blog/create"
+          className="mb-6 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
+          Create New Article
+        </Link>
 
         {/* Blog Posts Grid */}
         <div className="grid gap-8">
@@ -25,7 +31,7 @@ export default function BlogPage() {
             >
               <div className="flex justify-between items-start mb-3">
                 <h2 className="text-2xl font-bold text-gray-900 flex-1">
-                    {post.title}
+                  {post.title}
                 </h2>
                 <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
                   {post.readTime}
