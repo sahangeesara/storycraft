@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       content: body.content,
       excerpt: body.excerpt,
       date: body.date,
-      user_id: body.user_id,
+      author: body.author,
       category: body.category || null,
     },
   ]);

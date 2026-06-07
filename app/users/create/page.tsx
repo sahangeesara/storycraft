@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function CreateUserPage() {
   const router = useRouter();
@@ -21,22 +22,65 @@ export default function CreateUserPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase.from("users").insert([
-      {
-        username: form.username,
+    try {
+      const { data, error } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
-        role: form.role,
-      },
-    ]);
+      });
 
-    if (!error) {
-      router.push("/users");
-    } else {
-      alert(error.message);
+      if (error) {
+         await Swal.fire({
+           icon: 'error',
+           title: 'Something went wrong',
+           text: error.message,
+           confirmButtonColor: '#d33'
+         });
+        return;
+      }
+
+      if (!data.user) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'User creation failed',
+          text: 'Please try again.'
+        });
+        return;
+      }
+
+      const { error: profileError } = await supabase
+          .from("users")
+          .insert([
+            {
+              id: data.user.id,
+              username: form.username,
+              email: form.email,
+              role: form.role,
+            },
+          ]);
+
+      if (profileError) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Something went wrong',
+          text: profileError.message,
+          confirmButtonColor: '#d33'
+        });
+        return;
+      }
+
+      await Swal.fire({
+        title: "Success!",
+        text: "Registration successful",
+        icon: "success",
+        confirmButtonColor: "#2563eb",
+      });
+
+      router.push("/auth/login");
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
     }
   };
-
   return (
     <div className="max-w-xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Create User</h1>

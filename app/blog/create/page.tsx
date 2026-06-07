@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Swal from "sweetalert2";
+import {router} from "next/client";
 
 export default function CreateBlogPage() {
     const [form, setForm] = useState({
@@ -10,7 +12,7 @@ export default function CreateBlogPage() {
         content: "",
         excerpt: "",
         date: "",
-        user_id: "",
+        author: "",
         category: "",
     });
 
@@ -32,16 +34,22 @@ export default function CreateBlogPage() {
         });
 
         if (res.ok) {
-            alert("Blog created successfully!");
+            await Swal.fire({
+                title: "Success!",
+                text: "Blog created successfully!",
+                icon: "success",
+                confirmButtonText: "OK",
+            });
             setForm({
                 title: "",
                 slug: "",
                 content: "",
                 excerpt: "",
                 date: "",
-                user_id: "",
+                author: "",
                 category: "",
             });
+            await router.push("/blog");
         }
     };
 
@@ -100,9 +108,9 @@ export default function CreateBlogPage() {
 
                 <input
                     type="text"
-                    name="user_id"
-                    placeholder="user_id"
-                    value={form.user_id}
+                    name="author"
+                    placeholder="author"
+                    value={form.author}
                     onChange={handleChange}
                     className="w-full border p-2 rounded"
                 />

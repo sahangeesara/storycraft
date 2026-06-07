@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -23,29 +24,72 @@ export default function RegisterPage() {
     });
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent
-  ) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase
-      .from("users")
-      .insert([
-        {
-          username: form.username,
-          email: form.email,
-          password: form.password,
-          role: form.role,
-        },
-      ]);
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: form.email,
+        password: form.password,
+      });
 
-    if (error) {
-      alert(error.message);
-      return;
+      if (error) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+          confirmButtonColor: '#d33'
+        });
+        return;
+      }
+
+      if (!data.user) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'User creation failed'
+        });
+        return;
+      }
+
+      const { error: profileError } = await supabase
+          .from("users")
+          .insert([
+            {
+              id: data.user.id,
+              username: form.username,
+              email: form.email,
+              role: form.role,
+              password: form.password,
+            },
+          ]);
+
+      if (profileError) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Something went wrong',
+          text: profileError.message,
+          confirmButtonColor: '#d33'
+        });
+        return;
+      }
+
+      await Swal.fire({
+        title: "Success!",
+        text: "Registration successful",
+        icon: "success",
+        confirmButtonColor: "#2563eb",
+      });
+
+      router.push("/auth/login");
+    } catch (err) {
+      console.error(err);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Something went wrong',
+        text: 'Please try again.'
+      });
     }
-
-    alert("User registered successfully");
-    router.push("auth/login");
   };
 
   return (

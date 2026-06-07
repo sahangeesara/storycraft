@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function LoginPage() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -25,11 +26,15 @@ export default function LoginPage() {
     setLoading(false);
 
     if (error) {
-      alert(error.message);
-      return;
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+        confirmButtonColor: '#d33'
+      });      return;
     }
 
-    router.push("/dashboard");
+    router.push("/users");
   };
 
   return (
