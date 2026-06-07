@@ -64,9 +64,6 @@ export default async function BlogArticlePage({
               <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                 {article.category}
               </span>
-                <span className="text-gray-600 text-sm">
-                {article.read_time}
-              </span>
               </div>
 
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
