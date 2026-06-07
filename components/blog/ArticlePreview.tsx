@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { BlogArticle } from '@/lib/blog';
+import type { BlogArticle } from '@/types/blog';
 
 export default function ArticlePreview({ article }: { article: BlogArticle }) {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ export default function ArticlePreview({ article }: { article: BlogArticle }) {
             <div className="p-4 border-b flex items-start justify-between gap-4">
               <div>
                 <h3 className="text-lg font-bold">{article.title}</h3>
-                <p className="text-sm text-gray-500">By {article.author} • {article.readTime}</p>
+                <p className="text-sm text-gray-500">By {article.author}</p>
               </div>
               <div>
                 <button
