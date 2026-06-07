@@ -25,7 +25,7 @@ export default function CreateUserPage() {
       {
         username: form.username,
         email: form.email,
-        password: form.password, // ⚠️ (later hash it)
+        password: form.password,
         role: form.role,
       },
     ]);
