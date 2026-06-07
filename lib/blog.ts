@@ -1,11 +1,12 @@
-import { supabase } from './supabase';
+import { BlogArticle } from '@/types/blog';
+import {supabase} from "@/lib/supabase";
 
-export async function getAllArticles() {
+export async function getAllArticles(): Promise<BlogArticle[]> {
   const { data, error } = await supabase
       .from('blogArticle')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .select('*');
 
   if (error) throw error;
-  return data || [];
+
+  return data ?? [];
 }

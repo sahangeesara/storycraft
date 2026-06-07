@@ -1,6 +1,7 @@
 import { getAllArticles } from '@/lib/blog';
 import ArticlePreview from '@/components/blog/ArticlePreview';
 import Link from "next/link";
+import {BlogArticle} from "@/types/blog";
 
 export default async function BlogPage() {
   const articles = await getAllArticles();
@@ -26,7 +27,7 @@ export default async function BlogPage() {
           </Link>
 
           <div className="grid gap-8">
-            {articles.map((post: never) => (
+            {articles.map((post: BlogArticle) => (
                 <article
                     key={post.id}
                     className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border-l-4 border-blue-600"
