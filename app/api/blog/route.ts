@@ -4,14 +4,14 @@ import { supabase } from "@/lib/supabase";
 export async function POST(req: Request) {
   const body = await req.json();
 
-  const { data, error } = await supabase.from("blog_articles").insert([
+  const { data, error } = await supabase.from("blogArticle").insert([
     {
       title: body.title,
       slug: body.slug,
       content: body.content,
       excerpt: body.excerpt,
       date: body.date,
-      author: body.author,
+      user_id: body.user_id,
       category: body.category || null,
     },
   ]);

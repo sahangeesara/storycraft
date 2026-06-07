@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { BlogArticle } from '@/lib/articles';
+import type { BlogArticle } from '@/lib/blog';
 
 export default function ArticlePreview({ article }: { article: BlogArticle }) {
   const [open, setOpen] = useState(false);

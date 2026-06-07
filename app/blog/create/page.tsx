@@ -10,7 +10,7 @@ export default function CreateBlogPage() {
         content: "",
         excerpt: "",
         date: "",
-        author: "",
+        user_id: "",
         category: "",
     });
 
@@ -39,7 +39,7 @@ export default function CreateBlogPage() {
                 content: "",
                 excerpt: "",
                 date: "",
-                author: "",
+                user_id: "",
                 category: "",
             });
         }
@@ -100,9 +100,9 @@ export default function CreateBlogPage() {
 
                 <input
                     type="text"
-                    name="author"
-                    placeholder="Author"
-                    value={form.author}
+                    name="user_id"
+                    placeholder="user_id"
+                    value={form.user_id}
                     onChange={handleChange}
                     className="w-full border p-2 rounded"
                 />
