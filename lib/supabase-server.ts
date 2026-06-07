@@ -12,8 +12,16 @@ export async function createClient() {
                 getAll() {
                     return cookieStore.getAll();
                 },
-                setAll() {
-                    // no-op for server components
+                setAll(cookiesToSet) {
+                    try {
+                        cookiesToSet.forEach(({ name, value, options }) =>
+                            cookieStore.set(name, value, options)
+                        );
+                    } catch {
+                        // The `setAll` method can be called from a Server Component
+                        // which cannot write cookies. We safely ignore this error here
+                        // because middleware should handle cookie refreshing.
+                    }
                 },
             },
         }
