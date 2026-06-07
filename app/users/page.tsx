@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 type User = {
   id: number;
@@ -26,7 +27,7 @@ export default function UsersPage() {
   useEffect(() => {
     fetchUsers();
   }, []);
-  
+
   const deleteUser = async (id: number) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this user?"
@@ -40,7 +41,12 @@ export default function UsersPage() {
       .eq("id", id);
 
     if (error) {
-      alert(error.message);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+        confirmButtonColor: '#d33'
+      });
       return;
     }
 
@@ -69,9 +75,6 @@ export default function UsersPage() {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                  ID
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                   Username
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -92,7 +95,6 @@ export default function UsersPage() {
             <tbody className="divide-y divide-gray-200 bg-white">
               {users.map((user) => (
                 <tr key={user.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">{user.id}</td>
 
                   <td className="px-6 py-4 font-medium text-gray-900">
                     {user.username}

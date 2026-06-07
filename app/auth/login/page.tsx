@@ -18,23 +18,71 @@ export default function LoginPage() {
 
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    console.log('Attempting login with email:', email);
+    console.log('Attempting login with password:', password);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    setLoading(false);
+      setLoading(false);
 
-    if (error) {
+      if (error) {
+        console.error('Login error:', error);
+
+        let errorMessage = error.message;
+
+        // Provide helpful message for common errors
+        if (error.message === 'Invalid login credentials') {
+          errorMessage = 'Invalid email or password. If you just registered, please check your email to confirm your account.';
+        } else if (error.message === 'Email not confirmed') {
+          errorMessage = 'Please confirm your email address. Check your inbox for the confirmation link.';
+        }
+
+        await Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: errorMessage,
+          confirmButtonColor: '#d33'
+        });
+        return;
+      }
+
+      // Check if user was returned
+      if (!data.user) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'No user data returned. Please try again.',
+          confirmButtonColor: '#d33'
+        });
+        return;
+      }
+
+      console.log('Login successful:', data);
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Login successful',
+        confirmButtonColor: '#3085d6',
+        timer: 1500,
+        showConfirmButton: false
+      });
+
+      router.push("/users");
+    } catch (err) {
+      setLoading(false);
+      console.error('Unexpected error:', err);
+
       await Swal.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: error.message,
+        title: 'Error',
+        text: 'An unexpected error occurred. Please try again.',
         confirmButtonColor: '#d33'
-      });      return;
+      });
     }
-
-    router.push("/users");
   };
 
   return (

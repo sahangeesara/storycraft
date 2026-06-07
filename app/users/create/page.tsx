@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import bcrypt from "bcryptjs";
 
 export default function CreateUserPage() {
   const router = useRouter();
@@ -23,26 +24,27 @@ export default function CreateUserPage() {
     e.preventDefault();
 
     try {
+      const hashedPassword = await bcrypt.hash(form.password, 10);
+
       const { data, error } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
       });
 
       if (error) {
-         await Swal.fire({
-           icon: 'error',
-           title: 'Something went wrong',
-           text: error.message,
-           confirmButtonColor: '#d33'
-         });
+        await Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
         return;
       }
 
       if (!data.user) {
         await Swal.fire({
-          icon: 'error',
-          title: 'User creation failed',
-          text: 'Please try again.'
+          icon: "error",
+          title: "Error",
+          text: "User creation failed",
         });
         return;
       }
@@ -55,30 +57,27 @@ export default function CreateUserPage() {
               username: form.username,
               email: form.email,
               role: form.role,
+              password: hashedPassword,
             },
           ]);
 
       if (profileError) {
         await Swal.fire({
-          icon: 'error',
-          title: 'Something went wrong',
+          icon: "error",
+          title: "Something went wrong",
           text: profileError.message,
-          confirmButtonColor: '#d33'
         });
         return;
       }
 
       await Swal.fire({
-        title: "Success!",
-        text: "Registration successful",
         icon: "success",
-        confirmButtonColor: "#2563eb",
+        title: "Registration successful",
       });
 
       router.push("/auth/login");
     } catch (err) {
       console.error(err);
-      alert("Something went wrong");
     }
   };
   return (
