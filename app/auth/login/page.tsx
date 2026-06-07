@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import AdminOnly from "@/components/blog/AdminOnly";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,8 +19,6 @@ export default function LoginPage() {
 
     setLoading(true);
 
-    console.log('Attempting login with email:', email);
-    console.log('Attempting login with password:', password);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -60,8 +59,6 @@ export default function LoginPage() {
         return;
       }
 
-      console.log('Login successful:', data);
-
       await Swal.fire({
         icon: 'success',
         title: 'Success!',
@@ -71,7 +68,18 @@ export default function LoginPage() {
         showConfirmButton: false
       });
 
-      router.push("/users");
+      const { data: profile } = await supabase
+          .from("users")
+          .select("role")
+          .eq("id", data.user.id)
+          .single();
+
+      if (profile?.role === "admin") {
+        router.push("/users");
+      } else {
+        router.push("/");
+      }
+
     } catch (err) {
       setLoading(false);
       console.error('Unexpected error:', err);

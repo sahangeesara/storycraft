@@ -63,7 +63,36 @@ export default function EditUserPage() {
     router.push("/users");
   };
 
-  return (
+
+    useEffect(() => {
+        const checkAdminAndLoadUsers = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+
+            if (!user) {
+                router.push("/auth/login");
+                return;
+            }
+
+            const { data: profile, error } = await supabase
+                .from("users")
+                .select("role")
+                .eq("id", user.id)
+                .single();
+
+            if (error || profile?.role !== "admin") {
+                router.push("/");
+                return;
+            }
+        };
+
+        checkAdminAndLoadUsers().then(r => r);
+    }, []);
+
+
+
+    return (
     <div className="mx-auto max-w-xl p-6">
       <h1 className="mb-6 text-2xl font-bold">
         Edit User

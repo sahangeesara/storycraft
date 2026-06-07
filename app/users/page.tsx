@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import {useRouter} from "next/navigation";
 
 type User = {
   id: number;
@@ -16,6 +17,7 @@ type User = {
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   const fetchUsers = async () => {
     const { data, error } = await supabase.from("users").select("*");
@@ -25,7 +27,31 @@ export default function UsersPage() {
   };
 
   useEffect(() => {
-    fetchUsers();
+    const checkAdminAndLoadUsers = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        router.push("/auth/login");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+          .from("users")
+          .select("role")
+          .eq("id", user.id)
+          .single();
+
+      if (error || profile?.role !== "admin") {
+        router.push("/blog");
+        return;
+      }
+
+      await fetchUsers();
+    };
+
+    checkAdminAndLoadUsers().then(r => r);
   }, []);
 
   const deleteUser = async (id: number) => {

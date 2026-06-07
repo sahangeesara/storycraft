@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -80,6 +80,35 @@ export default function CreateUserPage() {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    const checkAdminAndLoadUsers = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        router.push("/auth/login");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+          .from("users")
+          .select("role")
+          .eq("id", user.id)
+          .single();
+
+      if (error || profile?.role !== "admin") {
+        router.push("/");
+        return;
+      }
+    };
+
+    checkAdminAndLoadUsers().then(r => r);
+  }, []);
+
+
+
   return (
     <div className="max-w-xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Create User</h1>
