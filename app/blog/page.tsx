@@ -39,7 +39,7 @@ export default async function BlogPage() {
                   </div>
 
                   <div className="flex gap-4 text-sm text-gray-600 mb-4">
-                    <span>{new Date(post.create_at).toLocaleDateString()}</span>
+                    <span>{new Date(post.created_at).toLocaleDateString()}</span>
                     <span>•</span>
                     <span>By {post.author}</span>
                   </div>
