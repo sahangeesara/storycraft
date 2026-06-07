@@ -17,11 +17,10 @@ export default async function BlogArticlePage({
 }) {
   const { slug } = await params;
 
-  const article = await getArticleBySlug(slug);
+  const allArticles = await getAllArticles();
+  const article = allArticles.find((a) => a.slug === slug);
 
   if (!article) notFound();
-
-  const allArticles = await getAllArticles();
 
   const relatedArticles = allArticles
       .filter((a) => a.id !== article.id)

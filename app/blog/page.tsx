@@ -35,13 +35,10 @@ export default async function BlogPage() {
                     <h2 className="text-2xl font-bold text-gray-900 flex-1">
                       {post.title}
                     </h2>
-                    <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
-                  {post.read_time}
-                </span>
                   </div>
 
                   <div className="flex gap-4 text-sm text-gray-600 mb-4">
-                    <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                    <span>{new Date(post.create_at).toLocaleDateString()}</span>
                     <span>•</span>
                     <span>By {post.author}</span>
                   </div>
