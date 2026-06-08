@@ -143,7 +143,7 @@ export default async function ProBlogPage() {
                                                 <ArticlePreview article={post} />
 
                                                 <div className="flex justify-between items-center mt-4">
-                         
+
                                                     <AdminOnly>
                                                         <BlogActions id={post.id} />
                                                     </AdminOnly>
