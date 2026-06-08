@@ -18,9 +18,7 @@ export async function createClient() {
                             cookieStore.set(name, value, options)
                         );
                     } catch {
-                        // The `setAll` method can be called from a Server Component
-                        // which cannot write cookies. We safely ignore this error here
-                        // because middleware should handle cookie refreshing.
+                        // ignore in server components
                     }
                 },
             },

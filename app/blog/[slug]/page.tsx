@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAllArticles } from '@/lib/blog';
+import "../../globals.css";
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+/* globals.css — add after @import "tailwindcss" */
 :root {
   --background: #ffffff;
   --foreground: #171717;

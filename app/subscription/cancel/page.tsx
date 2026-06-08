@@ -1,3 +1,5 @@
+import "../../globals.css";
+
 export default function CancelPage() {
   return (
     <div className="text-center py-20">

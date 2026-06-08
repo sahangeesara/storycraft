@@ -12,13 +12,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/subscription", label: "Subscription" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Post" },
-  ];
-
   useEffect(() => {
     const getUser = async () => {
       const {
@@ -33,7 +26,9 @@ export default function Navbar() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
+      const u = session?.user ?? null;
+
+      setUser(u);
     });
 
     return () => subscription.unsubscribe();
@@ -45,6 +40,16 @@ export default function Navbar() {
     setIsOpen(false);
     router.push("/auth/login");
   };
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/subscription", label: "Subscription" },
+    { href: "/about", label: "About" },
+    {
+      href: "/blog",
+      label: "Post",
+    },
+  ];
 
   const isActive = (path: string) => {
     if (pathname === path) return true;
@@ -67,10 +72,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link
-                href="/"
-                className="text-2xl font-bold text-blue-400"
-            >
+            <Link href="/" className="text-2xl font-bold text-blue-400">
               StoryCraft
             </Link>
 

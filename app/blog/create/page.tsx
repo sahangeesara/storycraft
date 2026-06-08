@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 // import {router} from "next/client";
 import {useRouter} from "next/navigation";
 import {supabase} from "@/lib/supabase";
+import "../../globals.css";
 
 export default function CreateBlogPage() {
     const router = useRouter();

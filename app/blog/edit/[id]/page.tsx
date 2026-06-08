@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useParams, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import "../../../globals.css";
 
 export default function EditBlogPage() {
     const params = useParams();

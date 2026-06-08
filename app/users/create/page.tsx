@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import bcrypt from "bcryptjs";
+import "../../globals.css";
 
 export default function CreateUserPage() {
   const router = useRouter();

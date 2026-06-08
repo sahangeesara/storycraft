@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
+import "../globals.css";
 
 type User = {
   id: number;
