@@ -50,14 +50,14 @@ export default function Footer() {
                 </Link>
               </li>
 
-              <li>
+              {/* <li>
                 <Link
                   href="/subscription"
                   className="hover:text-white transition"
                 >
                   Subcription
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
